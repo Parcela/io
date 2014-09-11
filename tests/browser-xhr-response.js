@@ -4,7 +4,7 @@
 var expect = require('chai').expect,
 	should = require('chai').should();
 
-var IO = require("../io-win.js"),
+var IO = require("../io"),
     URL = '/io';
 
 describe('Response-object', function () {

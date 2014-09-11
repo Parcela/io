@@ -3,7 +3,7 @@
 var expect = require('chai').expect,
 	should = require('chai').should();
 require('lang-ext');
-var IO = require("../io-win.js"),
+var IO = require("../io"),
     URL = '/io/status',
     checklist = {
         200: true,

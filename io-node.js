@@ -1,10 +1,10 @@
 /**
  *
- * Provides core IO-functionality for NodeJS in the same way as 'core-io-win.js' does on the browser.
- * This way, all ITSA.io methods can be used inside nodejs as well.
+ * Provides core IO-functionality for NodeJS in the same way as 'io-win.js' does on the browser.
+ * This way, all IO-methods can be used inside nodejs as well.
  *
- * @module core
- * @submodule core-io
+ * @module io
+ * @submodule io-node
  * @class IO
 */
 

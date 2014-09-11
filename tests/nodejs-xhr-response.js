@@ -2,7 +2,7 @@
 "use strict";
 var expect = require('chai').expect,
 	should = require('chai').should();
-var IO = require("../io-node.js"),
+var IO = require("../io"),
     URL = 'http://localhost:8000/io';
 
 

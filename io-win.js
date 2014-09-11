@@ -27,8 +27,8 @@
  * 4. No authentication or cookies will be sent with the request.
  * more info: http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx
  *
- * @module core
- * @submodule core-io
+ * @module io
+ * @submodule io-win
  * @class IO
 */
 
