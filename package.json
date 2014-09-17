@@ -1,62 +1,59 @@
 {
-	"name": "io",
-	"version": "0.0.1",
-	"description": "Promised I/O",
-	"author": [
-		{
-			"name": "Marco Asbreuk",
-			"email": "marco@itsasbreuk.nl"
-    	}
-  	],
-	"licenses": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Parcela/io"
-	},
-	"bugs": {
-		"url": "https://github.com/Parcela/io/issues"
-	},
-	"keywords": [
-		"Parcela",
-		"parcel"
-	],
-	"main":"io-node.js",
-	"browser": "io-win.js",
-	"dependencies": {
-		"ypromise": "*",
-		"promise-ext": "Parcela/promise-ext",
-		"lang-ext": "Parcela/lang-ext",
-		"utils":"Parcela/utils",
-		"http": "^0.0.0",
-		"xmldom": "^0.1.19",
-		"querystring": "^0.2.0"
-	},
-	"devDependencies": {
-		"chai": "^1.9.1",
-		"istanbul": "^0.3.0",
-		"jshint": "^2.5.5",
-		"mocha": "^1.21.4"
-	},
-
-	"engines": {
-		"node": "*"
-	},
-
-	"scripts": {
-		"pretest": "jshint ./*.js",
-		"test": "mocha tests/*.js  && istanbul cover $(which _mocha) -- tests/*.js",
-		"lint": "jshint ./*.js"
-	},
-	"homepage": "http://Parcela.github.io",
-	"maintainers": [
-		{
-			"name": "Daniel Barreiro",
-			"email": "devasatyam@gmail.com"
-    	},
-		{
-			"name": "Marco Asbreuk",
-			"email": "marco@itsasbreuk.nl"
-    	}
-  	]
-
+    "name": "io",
+    "version": "0.0.7",
+    "description": "Promised I/O",
+    "author": [
+        {
+            "name": "Marco Asbreuk",
+            "email": "marco@itsasbreuk.nl"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Parcela/io"
+    },
+    "bugs": {
+        "url": "https://github.com/Parcela/io/issues"
+    },
+    "keywords": [
+        "Parcela",
+        "parcel"
+    ],
+    "main": "io-node.js",
+    "browser": "io-win.js",
+    "dependencies": {
+        "ypromise": "*",
+        "promise-ext": "git://github.com/Parcela/promise-ext.git#v0.0.7",
+        "lang-ext": "git://github.com/Parcela/lang-ext.git#v0.0.7",
+        "utils": "git://github.com/Parcela/utils.git#v0.0.7",
+        "http": "^0.0.0",
+        "xmldom": "^0.1.19",
+        "querystring": "^0.2.0"
+    },
+    "devDependencies": {
+        "chai": "^1.9.1",
+        "istanbul": "^0.3.0",
+        "jshint": "^2.5.5",
+        "mocha": "^1.21.4"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "scripts": {
+        "pretest": "jshint ./*.js",
+        "test": "mocha tests/*.js  && istanbul cover $(which _mocha) -- tests/*.js",
+        "lint": "jshint ./*.js"
+    },
+    "homepage": "http://Parcela.github.io",
+    "maintainers": [
+        {
+            "name": "Daniel Barreiro",
+            "email": "devasatyam@gmail.com"
+        },
+        {
+            "name": "Marco Asbreuk",
+            "email": "marco@itsasbreuk.nl"
+        }
+    ],
+    "license": "BSD 3-clause"
 }
