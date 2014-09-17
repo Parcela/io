@@ -23,9 +23,9 @@
     "browser": "io-win.js",
     "dependencies": {
         "ypromise": "*",
-        "promise-ext": "git://github.com/Parcela/promise-ext.git#v0.0.7",
-        "lang-ext": "git://github.com/Parcela/lang-ext.git#v0.0.7",
-        "utils": "git://github.com/Parcela/utils.git#v0.0.7",
+        "promise-ext": "Parcela/promise-ext",
+        "lang-ext": "Parcela/lang-ext",
+        "utils": "Parcela/utils",
         "http": "^0.0.0",
         "xmldom": "^0.1.19",
         "querystring": "^0.2.0"
