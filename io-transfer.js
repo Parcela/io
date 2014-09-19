@@ -64,7 +64,7 @@ IO_TRANSFER = {
             options.method = 'GET';
             // delete hidden property `data`: don't want accedentially to be used
             delete options.data;
-            ioPromise = this._xhr(options);
+            ioPromise = this.request(options);
             returnPromise = ioPromise.then(
                 function(xhrResponse) {
                     return xhrResponse.responseText;
@@ -120,7 +120,7 @@ IO_TRANSFER = {
             options.headers.Accept = 'application/json';
             // we don't want the user to re-specify the server's responsetype:
             delete options.responseType;
-            ioPromise = this._xhr(options);
+            ioPromise = this.request(options);
             returnPromise = ioPromise.then(
                 function(xhrResponse) {
                     // not 'try' 'catch', because, if parsing fails, we actually WANT the promise to be rejected
@@ -300,7 +300,7 @@ IO_TRANSFER = {
                         // we don't want the user to re-specify the server's responsetype:
                         delete options.responseType;
                     }
-                    ioPromise = instance._xhr(options);
+                    ioPromise = instance.request(options);
                     returnPromise = ioPromise.then(
                         function(xhrResponse) {
                             if (verb==='send') {
@@ -355,7 +355,7 @@ IO_TRANSFER = {
             options.method = DELETE;
             options.data = deleteKey;
             delete options.responseType;
-            ioPromise = this._xhr(options);
+            ioPromise = this.request(options);
             returnPromise = ioPromise.then(
                 function(xhrResponse) {
                     var response = xhrResponse.responseText;

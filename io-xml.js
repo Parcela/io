@@ -73,7 +73,7 @@ IO_XML = {
                 },
                 ioPromise, returnPromise;
             options && XMLOptions.merge(options);
-            ioPromise = this._xhr(XMLOptions);
+            ioPromise = this.request(XMLOptions);
             returnPromise = ioPromise.then(
                 function(xhrResponse) {
                     // if the responsetype is no "text/xml", then throw an error, else return xhrResponse.responseXML;
