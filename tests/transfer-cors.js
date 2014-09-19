@@ -1,23 +1,30 @@
 /*global describe, it */
-"use strict";
 
-var expect = require('chai').expect,
-    should = require('chai').should();
+(function (window) {
 
-var IO = require("../io"),
-    IO_TRANSFER = require("../io/io-transfer.js"),
-    IO_CORS = require("../io/io-cors.js"),
-    IO_XML = require("../io/io-xml.js"),
-    TYPEOF = require("utils").typeof,
-    URL = 'http://itsalibrarycors.itsasbreuk.nl/io',
-    REG_APP_JSON = /^application\/json/,
-    ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
-    ie = ieTest && ieTest[1],
-    xdr = ie && (ie<10);
+    "use strict";
 
-IO_TRANSFER.mergeInto(IO);
-IO_CORS.mergeInto(IO);
-IO_XML.mergeInto(IO);
+    var chai = require('chai'),
+        expect = chai.expect,
+        should = chai.should();
+
+    chai.use(require('chai-as-promised'));
+
+    var IO = require("../io")(window),
+        IO_TRANSFER = require("../io-transfer.js"),
+        IO_CORS = require("../io-cors.js"),
+        IO_XML = require("../io-xml.js"),
+        TYPEOF = require('utils').typeOf,
+        URL = 'http://servercors.parcela.io/io',
+        REG_APP_JSON = /^application\/json/,
+        ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
+        ie = ieTest && ieTest[1],
+        xdr = ie && (ie<10);
+
+    IO_TRANSFER.mergeInto(IO);
+    IO_CORS.mergeInto(IO);
+    IO_XML.mergeInto(IO);
+
 
 describe('CORS-io response-object', function () {
 
@@ -26,7 +33,7 @@ describe('CORS-io response-object', function () {
             url: URL+'/action/responsetxt',
             method: 'GET'
         };
-        IO._xhr(options).then(
+        IO.request(options).then(
             function(response) {
                 response.responseText.should.be.eql('Acknowledge responsetext ok');
                 (response.readyState===4).should.be.true; // response.readyState.should.be.eql(4) --> goes wrong in IE<10 ??
@@ -49,7 +56,7 @@ describe('CORS-io response-object', function () {
             method: 'GET',
             responseType: 'text/xml'
         }
-        IO._xhr(options).then(
+        IO.request(options).then(
             function(response) {
                 response.responseXML.getElementsByTagName('response')[0].firstChild.nodeValue.should.be.eql('10');
                 (response.readyState===4).should.be.true; // response.readyState.should.be.eql(4) --> goes wrong in IE<10 ??
@@ -300,7 +307,7 @@ describe('CORS-io-transfer methods', function () {
             };
             IO.insert(URL+'/extractdata', data, {parseJSONDate: true}).then(
                 function(data) {
-                    TYPEOF.typeOf(data.personal.birthday).should.be.eql('date');
+                    TYPEOF(data.personal.birthday).should.be.eql('date');
                     done();
                 }
             ).then(
@@ -430,3 +437,5 @@ describe('CORS with io-xml', function () {
     });
 
 });
+
+}(global.window || require('fake-dom')));
