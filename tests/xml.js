@@ -4,8 +4,9 @@
 
     "use strict";
 
-    var expect = require('chai').expect,
-        should = require('chai').should();
+    var chai = require('chai'),
+        expect = chai.expect,
+        should = chai.should();
 
     chai.use(require('chai-as-promised'));
 
@@ -19,7 +20,7 @@
     IO_XML.mergeInto(IO);
 
     // we might need cors to make the tests pass in travis
-    xdr && require("../io-cors.js").mergeInto(IO);
+    xdr && require("../io-cors.js")(window).mergeInto(IO);
 
     describe('io.readXML()', function () {
 
