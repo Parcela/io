@@ -22,7 +22,7 @@
 
 "use strict";
 
-var NAME = '[io-cors]: ',
+var NAME = '[io-cors-ie9]: ',
     XmlDOMParser = require('xmldom').DOMParser,
     UNKNOW_ERROR = 'Unknown XDR-error', // XDR doesn't specify the error
     REQUEST_TIMEOUT = 'Request-timeout',

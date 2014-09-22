@@ -12,7 +12,7 @@
 
     var IO = require("../io")(window),
         IO_TRANSFER = require("../io-transfer.js"),
-        IO_CORS = require("../io-cors.js")(window),
+        IO_CORS = require("../io-cors-ie9.js")(window),
         IO_XML = require("../io-xml.js"),
         TYPEOF = require('utils').typeOf,
         URL = 'http://servercors.parcela.io/io',
