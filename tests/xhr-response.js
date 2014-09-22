@@ -4,8 +4,9 @@
 
     "use strict";
 
-    var expect = require('chai').expect,
-    	should = require('chai').should();
+    var chai = require('chai'),
+        expect = chai.expect,
+    	should = chai.should();
 
     chai.use(require('chai-as-promised'));
 
@@ -16,7 +17,7 @@
         xdr = ie && (ie<10);
 
     // we might need cors to make the tests pass in travis
-    xdr && require("../io-cors.js").mergeInto(IO);
+    xdr && require("../io-cors.js")(window).mergeInto(IO);
 
     describe('Response-object', function () {
 
@@ -31,7 +32,7 @@
                     (response.readyState===4).should.be.true; // response.readyState.should.be.eql(4) --> goes wrong in IE<10 ??
                     (response.status===200).should.be.true; // response.status.should.be.eql(200) --> goes wrong in IE<10 ??
                     expect(response.getAllResponseHeaders()).be.a.String;
-                    (response.getAllResponseHeaders().indexOf('Content-Type:')!==-1).should.be.true;
+                    ((response.getAllResponseHeaders().indexOf('Content-Type:')!==-1) || (response.getAllResponseHeaders().indexOf('content-type:')!==-1)).should.be.true;
                     response.getResponseHeader('Content-Type').should.be.eql(xdr ? 'text/plain' : 'text/plain; charset=utf-8');
                     done();
                 }
@@ -54,7 +55,7 @@
                     (response.readyState===4).should.be.true; // response.readyState.should.be.eql(4) --> goes wrong in IE<10 ??
                     (response.status===200).should.be.true; // response.status.should.be.eql(200) --> goes wrong in IE<10 ??
                     expect(response.getAllResponseHeaders()).be.a.String;
-                    (response.getAllResponseHeaders().indexOf('Content-Type:')!==-1).should.be.true;
+                    ((response.getAllResponseHeaders().indexOf('Content-Type:')!==-1) || (response.getAllResponseHeaders().indexOf('content-type:')!==-1)).should.be.true;
                     response.getResponseHeader('Content-Type').should.be.eql(xdr ? 'text/xml' : 'text/xml; charset=utf-8');
                     done();
                 }

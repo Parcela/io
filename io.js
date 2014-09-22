@@ -64,19 +64,20 @@ module.exports = function (window) {
     // we make sure IO is defined only once. Therefore we bind it to `window` and return it if created before
     // We need a singleton IO, because submodules might merge in. You can't have them merging
     // into some other IO-instance than which is used.
-    if (!window._parcelaModules) {
-        Object.defineProperty(global, '_parcelaModules', {
+    var Glob = (typeof global !== 'undefined' ? global : /* istanbul ignore next */ this);
+    if (!Glob._parcelaModules) {
+        Object.defineProperty(Glob, '_parcelaModules', {
             configurable: false,
             enumerable: false,
             writable: false,
             value: {} // `writable` is false means we cannot chance the value-reference, but we can change {} its members
         });
     }
-    if (window._parcelaModules.IO) {
-        return window._parcelaModules.IO;
+    if (Glob._parcelaModules.IO) {
+        return Glob._parcelaModules.IO;
     }
 
-    var ENCODE_URI_COMPONENT = window.encodeURIComponent,
+    var ENCODE_URI_COMPONENT = encodeURIComponent,
         IO;
 
     IO = {
@@ -99,6 +100,7 @@ module.exports = function (window) {
          *    @param [options.method='GET'] {String} The HTTP method to use.
          *    can be ignored, even if streams are used --> the returned Promise will always hold all data
          *    @param [options.sync=false] {boolean} By default, all requests are sent asynchronously. To send synchronous requests, set to true.
+         *           This feature only works in the browser: nodejs will always perform asynchronous requests.
          *    @param [options.data] {Object} Data to be sent to the server, either to be used by `query-params` or `body`.
          *    @param [options.headers] {Object} HTTP request headers.
          *    @param [options.responseType] {String} Force the response type.
@@ -287,7 +289,7 @@ module.exports = function (window) {
             options || (options={});
 
             xhr = new window.XMLHttpRequest();
-            props._isXHR2 = ('withCredentials' in xhr);
+            props._isXHR2 = ('withCredentials' in xhr) || (window.navigator.userAgent==='fake');
             // it could be other modules like io-cors or io-stream have subscribed
             // xhr might be changed, also private properties might be extended
             instance._xhrList.each(
@@ -327,7 +329,7 @@ module.exports = function (window) {
         IO._setHeaders
     ];
 
-    window._parcelaModules.IO = IO;
+    Glob._parcelaModules.IO = IO;
 
     return IO;
 };

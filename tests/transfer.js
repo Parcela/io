@@ -23,7 +23,7 @@
     IO_TRANSFER.mergeInto(IO);
 
     // we might need cors to make the tests pass in travis
-    xdr && require("../io-cors.js").mergeInto(IO);
+    xdr && require("../io-cors.js")(window).mergeInto(IO);
 
     describe('io-transfer methods', function () {
 

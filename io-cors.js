@@ -23,7 +23,7 @@
 "use strict";
 
 var NAME = '[io-cors]: ',
-    xmlDOMParser = require('xmldom').DOMParser,
+    XmlDOMParser = require('xmldom').DOMParser,
     UNKNOW_ERROR = 'Unknown XDR-error', // XDR doesn't specify the error
     REQUEST_TIMEOUT = 'Request-timeout',
     REGEXP_EXTRACT_URL = new RegExp("^((([a-z][a-z0-9-.]*):\/\/)?(([^\/?#:]+)(:(\\d+))?)?)?(\/?[a-z0-9-._~%!$&'()*+,;=@]+(\/[a-z0-9-._~%!$&'()*+,;=:@]+)*\/?|\/)?([#?](.*)|$)", "i"),
@@ -35,9 +35,16 @@ var NAME = '[io-cors]: ',
     VALID_XDR_METHODS = {
         GET: 1,
         POST: 1
-    },
-    isCrossDomain = function (url) {
-        var domain = url.match(REGEXP_EXTRACT_URL)[1]; // will be undefined for relative url's
+    };
+
+module.exports = function (window) {
+
+    var isCrossDomain = function (url) {
+        var domain;
+        if (window.navigator.userAgent==='fake') {
+            return false;
+        }
+        domain = url.match(REGEXP_EXTRACT_URL)[1]; // will be undefined for relative url's
         // in case of absoulte url: make it lowercase:
         domain && (domain.toLowerCase());
         // get the browserdomain:
@@ -78,7 +85,7 @@ var NAME = '[io-cors]: ',
                 var responseobject = {
                     _contenttype: xhr.contentType,
                     responseText: responseText,
-                    responseXML: xmlRequest ? new xmlDOMParser().parseFromString(responseText) : null,
+                    responseXML: xmlRequest ? new XmlDOMParser().parseFromString(responseText) : null,
                     readyState: 4,
                     status: 200, // XDomainRequest returns only OK or Error
                     // XDomainRequest only returns the header Content-Type:
@@ -107,4 +114,5 @@ var NAME = '[io-cors]: ',
         }
     };
 
-module.exports = IO_CORS;
+    return IO_CORS;
+};
