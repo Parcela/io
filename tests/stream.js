@@ -19,7 +19,7 @@ var IO = require("../io")(window),
     IO_STREAM.mergeInto(IO);
 
     // we might need cors to make the tests pass in travis
-    xdr && require("../io-cors.js")(window).mergeInto(IO);
+    xdr && require("../io-cors-ie9.js")(window).mergeInto(IO);
 
     // Very interesting issue where we must take care with:
     // XDomainRequest only fires the `onprogress`-event when the block of code exceeds 2k !
