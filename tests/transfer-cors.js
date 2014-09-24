@@ -15,7 +15,7 @@
         IO_CORS = require("../io-cors-ie9.js")(window),
         IO_XML = require("../io-xml.js"),
         TYPEOF = require('utils').typeOf,
-        URL = 'http://servercors.parcela.io/io',
+        URL = 'http://servercors.itsa.io/io',
         REG_APP_JSON = /^application\/json/,
         ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
         ie = ieTest && ieTest[1],
