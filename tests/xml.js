@@ -12,7 +12,7 @@
 
     var IO = require("../io")(window),
         IO_XML = require("../io-xml.js"),
-        URL = 'http://servercors.parcela.io/io',
+        URL = 'http://servercors.itsa.io/io',
         ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
         ie = ieTest && ieTest[1],
         xdr = ie && (ie<10);
