@@ -9,7 +9,7 @@ var expect = require('chai').expect,
 
 var IO = require("../io")(window),
     IO_STREAM = require("../io-stream.js"),
-    URL = 'http://servercors.parcela.io/io',
+    URL = 'http://servercors.itsa.io/io',
     ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
     ie = ieTest && ieTest[1],
     block2k = '',
