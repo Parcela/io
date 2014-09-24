@@ -9,7 +9,7 @@
     require('lang-ext');
 
     var IO = require("../io")(window),
-        URL = 'http://servercors.parcela.io/io/status',
+        URL = 'http://servercors.itsa.io/io/status',
         ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
         ie = ieTest && ieTest[1],
         xdr = ie && (ie<10),
