@@ -13,7 +13,7 @@
     var IO = require("../io")(window),
         IO_TRANSFER = require("../io-transfer.js"),
         TYPEOF = require('utils').typeOf,
-        URL = 'http://servercors.parcela.io/io',
+        URL = 'http://servercors.itsa.io/io',
         REG_APP_JSON = /^application\/json/,
         ieTest = window.navigator.userAgent.match(/MSIE (\d+)\./),
         ie = ieTest && ieTest[1],
